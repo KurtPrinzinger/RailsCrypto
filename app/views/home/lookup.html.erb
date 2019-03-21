@@ -1,0 +1,22 @@
+<h3>Crypto Currency Lookup</h3>
+<br/>
+
+<%= form_tag home_lookup_path, :method => 'POST' do %>
+	<%= text_field_tag 'sym', nil, placeholder: 'Enter Crypto Symbol', size: 50 %>
+	<%= submit_tag 'Lockup Stock Quote' %>
+<br>
+<% end %>
+<hr>
+<%= @symbol %>
+<br>
+<br>
+<%= @currencies %>
+
+<% for c in @coins do %>
+   <% if c['symbol'] == @symbol %>
+         <p><%= @name = c['name'] %></p>
+         <p><%= @rank = c['rank'] %></p>
+         <p>USD <%= @price_usd = c['price_usd'] %></p>
+         <p><%= @last_Update = DateTime.strptime(c['last_updated'], '%s') %></p>
+   <% end %>
+<% end %>
